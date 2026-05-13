@@ -11,5 +11,3 @@
 - System Security
 - File System
 - Network Management
-- Shell Scripting
-- Containers
