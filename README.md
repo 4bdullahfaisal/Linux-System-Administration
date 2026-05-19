@@ -1,4 +1,4 @@
-# Linux System Administrator (RHCSA-level)
+# Linux System Administration (RHCSA-level)
 ---
 
 ## Topics Overview
