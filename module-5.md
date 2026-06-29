@@ -1,8 +1,8 @@
-# Module 5 Advanced Permissions
+# Module 5 — Advanced Permissions (Sticky Bit,SUID,SGID,ACL)
 **Environment:** Oracle Linux 9 on VirtualBox
 ---
 
-## Special Permissions (SUID, SGID, Sticky Bit)
+## Special Permissions
 
 Linux has three special permissions beyond standard rwx.
 
@@ -18,20 +18,26 @@ Linux has three special permissions beyond standard rwx.
 
 Used on directories. Everyone can create files, but only file owner, directory owner, or root can delete.
 
-Example - /tmp directory:
-ls -ld /tmp
-Output: drwxrwxrwt (the t at the end is sticky bit)
+Example - `/tmp` directory:
+
+`ls -ld /tmp`
+
+> Output: drwxrwxrwt (the t at the end is sticky bit)
 
 Practice:
+
+```
 sudo mkdir /shared
 sudo chmod 777 /shared
 sudo chmod +t /shared
 ls -ld /shared
+```
 
-Now other users cannot delete each other's files in /shared.
+Now other users cannot delete each other's files in `/shared`.
 
 Remove sticky bit:
-sudo chmod -t /shared
+
+`sudo chmod -t /shared`
 
 ---
 
@@ -39,27 +45,37 @@ sudo chmod -t /shared
 
 Used on executable files. Runs with owner's privileges, not the user running it.
 
-Example - /bin/passwd (updates /etc/shadow as root):
-ls -l /bin/passwd
-Output: -rwsr-xr-x (s where x should be for user)
+Example - `/bin/passwd` (updates /etc/shadow as root):
+
+`ls -l /bin/passwd`
+
+> Output: -rwsr-xr-x (s where x should be for user)
 
 Practice on a binary:
+
+```
 sudo cp /bin/sleep /usr/local/bin/sleep-suid
 sudo chmod u+s /usr/local/bin/sleep-suid
 ls -l /usr/local/bin/sleep-suid
+```
 
 ---
 
 ### SGID (Set Group ID)
 
-On files: runs with group owner's privileges
-On directories: new files inherit directory's group
+On files — runs with group owner's privileges
+
+On directories — new files inherit directory's group
 
 Practice on directory:
+
+```
 sudo mkdir /group-shared
 sudo chmod 2775 /group-shared
 ls -ld /group-shared
+
 Output: drwxrwsr-x (s in group x)
+```
 
 ---
 
@@ -72,10 +88,13 @@ Number | Permission
 1 | Sticky Bit
 
 Examples:
-chmod 4755 file   # -rwsr-xr-x (SUID)
-chmod 2755 dir    # drwxr-sr-x (SGID)
-chmod 1755 dir    # drwxr-xr-t (Sticky)
-chmod 3755 dir    # drwxr-sr-t (SGID + Sticky)
+
+```
+chmod 4755 file     # -rwsr-xr-x (SUID)
+chmod 2755 dir      # drwxr-sr-x (SGID)
+chmod 1755 dir      # drwxr-xr-t (Sticky)
+chmod 3755 dir      # drwxr-sr-t (SGID + Sticky)
+```
 
 ---
 
@@ -86,8 +105,11 @@ ACL allows giving permissions to specific users or groups beyond standard owner/
 ### Why ACL?
 
 Standard Linux permissions only allow:
+
 - One owner
+
 - One group
+
 - Others
 
 ACL lets you give access to multiple specific users or groups.
@@ -114,31 +136,38 @@ Default | `d:u:user:perms` | `d:u:john:rwx`
 
 Permissions: r (read), w (write), x (execute), - (none)
 
-## Commands Summary
+### Commands Summary
 
-Sticky Bit: `chmod +t directory`
+```
+chmod +t directory                                  # Sticky Bit
 
-SUID: `chmod u+s file`
+chmod u+s file                                      # SUID
 
-SGID: `chmod g+s file` or `chmod 2775 directory`
+chmod g+s file` or `chmod 2775 directory            # SGID
+```
 
-ACL:
-`getfacl file`
+### ACL Command
 
-`setfacl -m u:user:perms file`
+```
+getfacl file
 
-`setfacl -m g:group:perms file`
+setfacl -m u:user:perms file
 
-`setfacl -x u:user file`
+setfacl -m g:group:perms file
 
-`setfacl -b file`
+setfacl -x u:user file
+
+setfacl -b file
+```
 
 Special chmod numbers:
 
-`4755 - SUID`
+```
+1777                                                 # Sticky Bit
 
-`2755 - SGID`
+4755                                                 # SUID
 
-`1777 - Sticky Bit`
+2755                                                 # SGID
+```
 
 ---
