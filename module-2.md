@@ -1,4 +1,4 @@
-# Module 2 Essentials Tools
+# Module 2 — Essentials Tools
 ---
 
 **VM:** Oracle Linux 9 on VirtualBox
