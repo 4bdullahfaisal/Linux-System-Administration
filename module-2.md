@@ -41,7 +41,7 @@ Inside nano: Ctrl+O saves, Ctrl+X exits, Ctrl+W searches, Ctrl+K cuts a line, Ct
 
 ### Hard links
 
-Hard links make the same file have two names. They share the same inode number. Delete the original and the link still works.
+**Hard links** make the same file have two names. They share the same inode number. Delete the original and the link still works.
 
 - Create a file: `echo "sample text" > win.txt`
 
@@ -57,7 +57,7 @@ Hard links make the same file have two names. They share the same inode number. 
 
 ### Soft links (symbolic links) 
 
-Soft links are shortcuts. They have a different inode and break if the original is deleted.
+**Soft links** are shortcuts. They have a different inode and break if the original is deleted.
 
 - Create a soft link: `ln -s win.txt win-soft.txt`
 
@@ -71,7 +71,7 @@ Soft links are shortcuts. They have a different inode and break if the original 
 
 ### File globbing 
 
-uses wildcards to match multiple files.
+**File globbing** uses wildcards to match multiple files.
 
 `*` — matches any characters. 
 
