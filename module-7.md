@@ -1,4 +1,4 @@
-# Module 7 System Security — Secure Remote Access (SSH, SCP, SFTP)
+# Module 7 — System Security (Secure Remote Access (SSH, SCP, SFTP))
 **Environment:** Oracle Linux 9 on VirtualBox + Windows 11 (Git Bash)
 
 ---
@@ -8,42 +8,51 @@
 SSH (Secure Shell) allows remote command-line access to a Linux machine.
 
 ### Prerequisites
+
 - VM network configured (NAT or Bridged)
+
 - SSH service running on VM
+
 - VM IP address known
 
 ### Commands on VM
+
 ```
 ip a                          # Find VM IP address
 systemctl status sshd         # Check SSH service is running
 sudo systemctl start sshd     # Start SSH if not running
 yum install openssh-server    # If not installed on both Machines u want to connect
 ```
+
 ### Test Connectivity with ping (on Windows Git Bash)
+
 `ping 10.50.79.182`
 
-Expected output: Reply from 10.50.79.182: bytes=32 time<1ms TTL=64
+> Expected output: Reply from 10.50.79.182: bytes=32 time<1ms TTL=64
 
 If ping fails:
+
 - Check VM network is Bridged or NAT with port forwarding
-- Check VM firewall: sudo firewall-cmd --add-service=ssh --permanent
+
+- Check VM firewall: `sudo firewall-cmd --add-service=ssh --permanent`
 
 ### Connect from Windows Git Bash
 
-ssh username@vm-ip-address
+- `ssh username@vm-ip-address`
 
-ssh abdullahfaisal@10.50.79.182
+- `ssh abdullahfaisal@10.50.79.182`
 
-Type 'yes' for host key, then enter password.
+- Type 'yes' for host key, then enter password.
 
 ### Once connected
-whoami
 
-pwd
+- `whoami`
 
-ls
+- `pwd`
 
-exit                          # Disconnect
+- `ls`
+
+- `exit`                          — Disconnect
 
 ---
 
@@ -57,14 +66,17 @@ scp | source | destination
 ----|--------|------------
 
 ### Copy Windows → Linux
-echo "Hello from Windows" > test.txt
+
+`echo "Hello from Windows" > test.txt`
 
 `scp test.txt abdullahfaisal@10.50.79.182:/home/abdullahfaisal/`
 
 ### Copy Linux → Windows
-` scp abdullahfaisal@10.50.79.182:/home/abdullahfaisal/file.txt . `
+
+` scp abdullahfaisal@10.50.79.182:/home/abdullahfaisal/file.txt `
 
 ### Copy directory recursively
+
 `scp -r myfolder/ abdullahfaisal@10.50.79.182:/home/abdullahfaisal/ `
 
 ---
@@ -74,7 +86,8 @@ echo "Hello from Windows" > test.txt
 Interactive file transfer — browse both local and remote systems.
 
 ### Connect
-sftp abdullahfaisal@10.50.79.182
+
+`sftp abdullahfaisal@10.50.79.182`
 
 ### SFTP Commands
 
@@ -99,6 +112,7 @@ Speed | Faster | Slightly slower
 ---
 
 ## Commands Summary
+
 ```
 ping ip-address                # Test connectivity
 ssh user@ip                    # Connect to remote
