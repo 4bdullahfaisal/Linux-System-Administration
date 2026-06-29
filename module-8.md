@@ -1,4 +1,4 @@
-# Module 8 File System — Managing Storage (Disks, Partitions, Mounting, Swap, LVM)
+# Module 8 — File System & Managing Storage (Disks, Partitions, Mounting, Swap, LVM)
 **Environment:** Oracle Linux 9 on VirtualBox
 
 ---
@@ -19,31 +19,39 @@
 ## Step 1 — Add New Disk in VirtualBox
 
 1. Shut down VM: `sudo shutdown now`
+
 2. In VirtualBox → Settings → Storage
+
 3. Click Add Hard Disk → Create new disk → VDI → Dynamically allocated
+
 4. Size: 2GB (for practice)
+
 5. Start VM
 
 ---
 
 ## Step 2 — Verify New Disk
 
-lsblk
+`lsblk`
 
 You'll see:
+
 - sda — existing disk
+
 - sdb — new 2GB disk
 
 Also check:
-fdisk -l
+
+`fdisk -l`
 
 ---
 
 ## Step 3 — Partition the Disk
 
-sudo fdisk /dev/sdb
+`sudo fdisk /dev/sdb`
 
 Inside fdisk commands:
+
 ```
 n  — New partition
 p  — Primary partition
@@ -52,13 +60,14 @@ Enter — First sector (default)
 Enter — Last sector (use full disk)
 w  — Write changes and exit
 ```
+
 Verify:
 
-lsblk
+`lsblk`
 
-sudo fdisk -l /dev/sdb
+`sudo fdisk -l /dev/sdb`
 
-Now you have /dev/sdb1
+Now you have `/dev/sdb1`
 
 ---
 
@@ -66,29 +75,29 @@ Now you have /dev/sdb1
 
 Format as ext4:
 
-sudo mkfs.ext4 /dev/sdb1
+`sudo mkfs.ext4 /dev/sdb1`
 
 Or format as XFS:
 
-sudo mkfs.xfs /dev/sdb1
+`sudo mkfs.xfs /dev/sdb1`
 
 ---
 
 ## Step 5 — Create Mount Point and Mount
 
-sudo mkdir /mnt/data
+`sudo mkdir /mnt/data`
 
-sudo mount /dev/sdb1 /mnt/data
+`sudo mount /dev/sdb1 /mnt/data`
 
 ---
 
 ## Step 6 — Verify Mount
 
-df -h
+`df -h`
 
-mount | grep sdb1
+`mount | grep sdb1`
 
-lsblk
+`lsblk`
 
 ---
 
@@ -96,25 +105,25 @@ lsblk
 
 Get UUID:
 
-sudo blkid /dev/sdb1
+`sudo blkid /dev/sdb1`
 
-Copy the UUID (e.g., UUID="abc123...")
+> Copy the UUID (e.g., UUID="abc123...")
 
 Edit fstab:
 
-sudo nano /etc/fstab
+`sudo nano /etc/fstab`
 
 Add this line:
 
-UUID=abc123... /mnt/data ext4 defaults 0 0
+`UUID=abc123... /mnt/data ext4 defaults 0 0`
 
 Save: Ctrl+O, Enter, Ctrl+X
 
 Test fstab:
 
-sudo mount -a
+`sudo mount -a`
 
-df -h
+`df -h`
 
 If no errors, fstab is correct.
 
@@ -122,15 +131,15 @@ If no errors, fstab is correct.
 
 ## Step 8 — Unmount Partition
 
-sudo umount /dev/sdb1
+`sudo umount /dev/sdb1`
 
-# or
+Or
 
-sudo umount /mnt/data
+`sudo umount /mnt/data`
 
 Verify:
 
-df -h | grep sdb1
+`df -h | grep sdb1`
 
 ---
 
@@ -138,25 +147,25 @@ df -h | grep sdb1
 
 Open fdisk:
 
-sudo fdisk /dev/sdb
+`sudo fdisk /dev/sdb`
 
 Inside fdisk:
 
-d  — Delete partition
+`d`  — Delete partition
 
-1  — Partition number (if asked)
+`1`  — Partition number (if asked)
 
-w  — Write changes and exit
+`w`  — Write changes and exit
 
 Verify:
 
-lsblk
+`lsblk`
 
-sdb1 should be gone.
+> sdb1 should be gone.
 
 If partition was mounted, unmount first:
 
-sudo umount /dev/sdb1
+`sudo umount /dev/sdb1`
 
 ---
 
@@ -166,69 +175,69 @@ Swap is virtual memory used when RAM is full.
 
 ### Check Current Swap
 
-swapon --show
+`swapon --show`
 
-free -h
+`free -h`
 
 ### Create Swap Partition (type 82)
 
-sudo fdisk /dev/sdb
+`sudo fdisk /dev/sdb`
 
-n - new partition
+`n` - new partition
 
-p - primary
+`p` - primary
 
-1 - partition number
+`1` - partition number
 
-Enter - default first sector
+`Enter` - default first sector
 
-Enter - default sector
+`Enter` - default sector
 
-t - change type
+`t` - change type
 
-82 - Linux swap
+`82` - Linux swap
 
-w - write
+`w` - write
 
 ### Format as Swap
 
-sudo mkswap /dev/sdb1
+`sudo mkswap /dev/sdb1`
 
 ### Enable Swap
 
-sudo swapon /dev/sdb1
+`sudo swapon /dev/sdb1`
 
 ### Verify
 
-swapon --show
+`swapon --show`
 
-free -h
+`free -h`
 
 ### Make Swap Permanent (fstab)
 
-sudo blkid /dev/sdb1
+`sudo blkid /dev/sdb1`
 
-sudo nano /etc/fstab
+`sudo nano /etc/fstab`
 
-Add: UUID=your-uuid none swap sw 0 0
+> Add: UUID=your-uuid none swap sw 0 0
 
 ### Test
 
-sudo swapon -a
+`sudo swapon -a`
 
-swapon --show
+`swapon --show`
 
 ### Disable Swap
 
-sudo swapoff /dev/sdb1
+`sudo swapoff /dev/sdb1`
 
 ### Remove Swap Partition
 
-sudo swapoff /dev/sdb1
+`sudo swapoff /dev/sdb1`
 
-sudo fdisk /dev/sdb
+`sudo fdisk /dev/sdb`
 
-d → 1 → w
+`d → 1 → w`
 
 ---
 
@@ -238,18 +247,19 @@ LVM allows flexible resizing without repartitioning.
 
 ### LVM Layers
 
-Physical Volume (PV) - Raw disk/partition
+- Physical Volume (PV) — Raw disk/partition
 
-Volume Group (VG) - Pool of storage
+- Volume Group (VG) — Pool of storage
 
-Logical Volume (LV) - Usable partition
+- Logical Volume (LV) — Usable partition
 
 ### Install LVM
 
-sudo dnf install lvm2 -y
+`sudo dnf install lvm2 -y`
 
 ### Prepare Partition (type 8e for LVM)
 
+```
 sudo fdisk /dev/sdb
 
 n → p → 1 → Enter → Enter
@@ -257,25 +267,31 @@ n → p → 1 → Enter → Enter
 t → 8e (Linux LVM)
 
 w
+```
 
 ### Create Physical Volume (PV)
 
+```
 sudo pvcreate /dev/sdb1
 
 sudo pvs
 
 sudo pvdisplay
+```
 
 ### Create Volume Group (VG)
 
+```
 sudo vgcreate vg_data /dev/sdb1
 
 sudo vgs
 
 sudo vgdisplay vg_data
+```
 
 ### Create Logical Volume (LV)
 
+```
 sudo lvcreate -L 500M -n lv_data vg_data
 
 sudo lvs
@@ -283,9 +299,11 @@ sudo lvs
 sudo lvdisplay
 
 LV location: /dev/vg_data/lv_data
+```
 
 ### Format and Mount LV
 
+```
 sudo mkfs.ext4 /dev/vg_data/lv_data
 
 sudo mkdir /mnt/lvm_data
@@ -293,17 +311,21 @@ sudo mkdir /mnt/lvm_data
 sudo mount /dev/vg_data/lv_data /mnt/lvm_data
 
 df -h | grep lvm_data
+```
 
 ### Extend Logical Volume
 
+```
 sudo lvextend -L +200M /dev/vg_data/lv_data
 
 sudo resize2fs /dev/vg_data/lv_data
 
 df -h | grep lvm_data
+```
 
 ### Permanent Mount for LV
 
+```
 sudo blkid /dev/vg_data/lv_data
 
 sudo nano /etc/fstab
@@ -313,9 +335,11 @@ Add: UUID=your-uuid /mnt/lvm_data ext4 defaults 0 0
 sudo mount -a
 
 df -h | grep lvm_data
+```
 
 ### Remove LVM (Cleanup)
 
+```
 sudo umount /mnt/lvm_data
 
 sudo lvremove /dev/vg_data/lv_data
@@ -323,6 +347,7 @@ sudo lvremove /dev/vg_data/lv_data
 sudo vgremove vg_data
 
 sudo pvremove /dev/sdb1
+```
 
 ---
 
