@@ -13,7 +13,7 @@ This guide covers creating, modifying, and deleting users and groups.
 
 ### Key Files
 
-```
+```bash
 /etc/passwd          # User account information  
 /etc/shadow          # Encrypted passwords  
 /etc/group           # Group definitions  
@@ -25,7 +25,7 @@ This guide covers creating, modifying, and deleting users and groups.
 
 ### View Current Users
 
-```
+```bash
 whoami               # Shows the current logged-in user  
 id                   # Shows user ID, group ID, and all groups the user belongs to  
 who                  # Shows who is currently logged into the system  
@@ -59,7 +59,7 @@ Option | Meaning | Example
 
 Examples:
 
-``` 
+```bash 
 sudo useradd -m -c "John Developer" -s /bin/bash -u 1501 john
 
 sudo useradd -m -d /opt/student -c "Lab Student" student
@@ -79,7 +79,7 @@ A regular user can change their own password by typing passwd without sudo.
 
 ### Modifying Users (usermod)
 
-```
+```bash
 sudo usermod -c "John Smith"           # john # Change full name/comment  
 sudo usermod -s /bin/sh john           # Change login shell  
 sudo usermod -l johndoe john           # Change username  
@@ -209,7 +209,7 @@ Change user's primary group:
 
 ## Commands Summary 
 
-```
+```bash
 # Users
 
 whoami                           # Current user  
