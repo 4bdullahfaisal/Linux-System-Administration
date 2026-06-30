@@ -52,14 +52,17 @@ Also check:
 
 Inside fdisk commands:
 
-```
-n  — New partition
-p  — Primary partition
-1  — Partition number 1
-Enter — First sector (default)
-Enter — Last sector (use full disk)
-w  — Write changes and exit
-```
+`n`        — New partition
+
+`p`        — Primary partition
+
+`1`        — Partition number 1
+
+`Enter`    — First sector (default)
+
+`Enter`    — Last sector (use full disk)
+
+`w`        — Write changes and exit
 
 Verify:
 
@@ -259,7 +262,7 @@ LVM allows flexible resizing without repartitioning.
 
 ### Prepare Partition (type 8e for LVM)
 
-```
+```bash
 sudo fdisk /dev/sdb
 
 n → p → 1 → Enter → Enter
@@ -271,7 +274,7 @@ w
 
 ### Create Physical Volume (PV)
 
-```
+```bash
 sudo pvcreate /dev/sdb1
 
 sudo pvs
@@ -281,7 +284,7 @@ sudo pvdisplay
 
 ### Create Volume Group (VG)
 
-```
+```bash
 sudo vgcreate vg_data /dev/sdb1
 
 sudo vgs
@@ -291,7 +294,7 @@ sudo vgdisplay vg_data
 
 ### Create Logical Volume (LV)
 
-```
+```bash
 sudo lvcreate -L 500M -n lv_data vg_data
 
 sudo lvs
@@ -303,7 +306,7 @@ LV location: /dev/vg_data/lv_data
 
 ### Format and Mount LV
 
-```
+```bash
 sudo mkfs.ext4 /dev/vg_data/lv_data
 
 sudo mkdir /mnt/lvm_data
@@ -315,7 +318,7 @@ df -h | grep lvm_data
 
 ### Extend Logical Volume
 
-```
+```bash
 sudo lvextend -L +200M /dev/vg_data/lv_data
 
 sudo resize2fs /dev/vg_data/lv_data
@@ -325,7 +328,7 @@ df -h | grep lvm_data
 
 ### Permanent Mount for LV
 
-```
+```bash
 sudo blkid /dev/vg_data/lv_data
 
 sudo nano /etc/fstab
@@ -339,7 +342,7 @@ df -h | grep lvm_data
 
 ### Remove LVM (Cleanup)
 
-```
+```bash
 sudo umount /mnt/lvm_data
 
 sudo lvremove /dev/vg_data/lv_data
@@ -367,7 +370,7 @@ Check mounts | `df -h`
 Get UUID | `sudo blkid /dev/sdb1`
 Edit fstab | `sudo nano /etc/fstab`
 Test fstab | `sudo mount -a`
-Delete partition | `sudo fdisk /dev/sdb` → d → w
+Delete partition | `sudo fdisk /dev/sdb` → `d` → `w`
 
 ## Swap Commands Summary
 
@@ -383,6 +386,7 @@ Delete partition | `sudo fdisk /dev/sdb` → d → w
 | Add to /etc/fstab | `UUID=... none swap sw 0 0` |
 | Test fstab | `sudo swapon -a` |
 | Remove swap partition | `sudo swapoff /dev/sdb1` then `sudo fdisk /dev/sdb` → `d` → `w` |
+
 
 ---
 
@@ -401,4 +405,5 @@ Resize ext4 FS | `resize2fs /dev/vg/lv`
 Remove LV | `lvremove /dev/vg/lv`
 Remove VG | `vgremove vg_name`
 Remove PV | `pvremove /dev/sdb1`
+
 ---
