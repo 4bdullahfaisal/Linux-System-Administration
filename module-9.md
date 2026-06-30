@@ -241,7 +241,7 @@ Add line: `nfs-share -fstype=nfs4,rw localhost:/srv/nfs-share`
 
 ### Networking
 
-```
+```bash
 ip a                                       # Show IPs
 hostnamectl                                # System hostname info
 sudo hostnamectl set-hostname name         # Set permanent hostname
@@ -264,6 +264,7 @@ sudo firewall-cmd --reload
 ### AutoFS
 sudo dnf install autofs -y
 sudo systemctl enable --now autofs
+
 # Edit /etc/auto.master and /etc/auto.nfs
 ls /auto/mountpoint
 ```
