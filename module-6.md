@@ -22,7 +22,7 @@ View existing repo files:
 
 ### .repo File Structure
 
-```
+```bash
 [repo-name]
 name=Description of Repository
 baseurl=http://example.com/path/to/repo
@@ -33,9 +33,11 @@ gpgkey=http://example.com/path/to/gpg-key
 
 ### Basic Repo Commands
 
-`sudo dnf config-manager --set-enabled repo-name`   — Enable repo
+```bash
+sudo dnf config-manager --set-enabled repo-name   # Enable repo
 
-`sudo dnf config-manager --set-disabled repo-name`  — Disable repo
+sudo dnf config-manager --set-disabled repo-name  # Disable repo
+```
 
 ---
 
@@ -49,7 +51,7 @@ On modern RHEL-based systems (Oracle Linux 9, Rocky 9, Alma 9), `dnf` is the def
 
 ### Basic Commands
 
-```
+```bash
 yum search package           # Search for a package
 
 yum info package             # Get package details
@@ -66,11 +68,13 @@ sudo yum update package      # Update a specific package
 
 ### Practice Example
 
-`sudo yum install httpd -y`
+```bash
+sudo yum install httpd -y
 
-`yum list installed | grep httpd`
+yum list installed | grep httpd
 
-`sudo yum remove httpd -y`
+sudo yum remove httpd -y
+```
 
 ---
 
@@ -88,7 +92,7 @@ systemctl manages systemd services — programs that run in the background.
 
 ### Basic systemctl Commands
 
-```
+```bash
 systemctl status service           # Check if service is running
 
 sudo systemctl start service       # Start a service
@@ -101,13 +105,13 @@ sudo systemctl enable service      # Enable on boot
 
 sudo systemctl disable service     # Disable on boot
 
-systemctl is-enabled service   # Check if enabled on boot
+systemctl is-enabled service ````  # Check if enabled on boot
 
 ```
 
 ### Practice with SSH
 
-```
+```bash
 systemctl status sshd
 
 systemctl stop sshd
@@ -123,14 +127,12 @@ systemctl is-enabled sshd
 
 ## Commands Summary
 
-```
+```bash
 ### Repositories
-
 dnf repolist
 ls /etc/yum.repos.d/
 
 ### Package Management
-
 yum search <package>
 sudo yum install <package>
 sudo yum update <package>
@@ -138,7 +140,6 @@ sudo yum remove <package>
 yum list installed
 
 ### System Services
-
 systemctl status <service>
 sudo systemctl start <service>
 sudo systemctl stop <service>
