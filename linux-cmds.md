@@ -1,7 +1,8 @@
 # Linux Commands
 
 ### File Operations
-```
+
+```bash
 pwd                         # Show current directory
 ls                          # List files
 ls -la                      # List all files (including hidden)
@@ -18,17 +19,21 @@ rm -rf <folder>             # Remove folder recursively
 cp <source> <dest>          # Copy file
 mv <source> <dest>          # Move/rename file
 ```
+
 ### Viewing File Parts
 
-- `head <file>`             - Show first 10 lines
-- `head -n 20 <file>`       - Show first 20 lines
-- `tail <file>`             - Show last 10 lines  
-- `tail -n 15 <file>`       - Show last 15 lines
-- `tail -f <file>`          - Follow file (watch new lines in real-time)
-- `head -20 file | tail -10`- Show lines 11-20 (middle section)
+```bash
+head <file>                 # Show first 10 lines
+head -n 20 <file>           # Show first 20 lines
+tail <file>                 # Show last 10 lines  
+tail -n 15 <file>           # Show last 15 lines
+tail -f <file>              # Follow file (watch new lines in real-time)
+head -20 file | tail -10    # Show lines 11-20 (middle section)
+```
 
 ### File Content
-```
+
+```bash
 echo "text"                 # Print text
 echo "text" > file.txt      # Write text to file (overwrite)
 echo "text" >> file.txt     # Append text to file
@@ -39,11 +44,13 @@ grep "pattern" <file>       # Search text in file
 ```
 
 ### Terminal Shortcuts
-`Ctrl+C` - Cancel/terminate current command  
-`Ctrl+D` - Exit shell or end file input  
-`Ctrl+Z` - Suspend current process  
-`Ctrl+R` - Search command history  
-`Ctrl+L` or `clear` - Clear terminal screen  
-`!!` - Repeat last command  
-`!$` - Last argument of previous command  
 
+```bash
+Ctrl+C                      # Cancel/terminate current command  
+Ctrl+D                      # Exit shell or end file input  
+Ctrl+Z                      # Suspend current process  
+Ctrl+R                      # Search command history  
+Ctrl+L or clear             # Clear terminal screen  
+!!                          # Repeat last command  
+!$                          # Last argument of previous command  
+```
