@@ -17,7 +17,7 @@ SSH (Secure Shell) allows remote command-line access to a Linux machine.
 
 ### Commands on VM
 
-```
+```bash
 ip a                          # Find VM IP address
 systemctl status sshd         # Check SSH service is running
 sudo systemctl start sshd     # Start SSH if not running
@@ -113,7 +113,7 @@ Speed | Faster | Slightly slower
 
 ## Commands Summary
 
-```
+```bash
 ping ip-address                # Test connectivity
 ssh user@ip                    # Connect to remote
 scp local.txt user@ip:         # Upload file
