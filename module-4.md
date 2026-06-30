@@ -32,7 +32,7 @@ A process is any running program on a Linux system. Every command you run create
 
 #### Examples:
 
-```
+```bash
 sleep 300 &          # Run in background
 jobs                 # See running jobs
 fg                   # Bring to foreground
@@ -54,7 +54,7 @@ bg                   # Resume in background
 
 #### Examples:
 
-```
+```bash
 sleep 500 &
 kill %1              # Kill job 1
 ps aux | grep sleep  # Find PID
@@ -83,12 +83,11 @@ kill 2814            # Kill by PID
 
 Examples:
 
-```
+```bash
 nice -n 5 sleep 300 &        # Lower priority (NI=5)
 sudo nice -n -5 sleep 300 &  # Higher priority (NI=-5)
 sudo renice -n 10 -p 3177    # Change running process priority
-
-Check priority with: ps -l (look at NI column)
+ps -l (look at NI column)    # Check priority 
 ```
 
 ---
@@ -107,7 +106,7 @@ Linux has two main tools for scheduling: cron (recurring) and at (one-time).
 
 ### Cron Time Syntax (5 fields)
 
-```
+```bash
 Field          Values
 Minute         0-59
 Hour           0-23
@@ -118,7 +117,7 @@ Day of week    0-7 (0 and 7 = Sunday)
 
 Examples:
 
-```
+```bash
 * * * * * command                    # Every minute
 */5 * * * * command                  # Every 5 minutes
 0 * * * * command                    # Every hour
@@ -160,7 +159,7 @@ To schedule:
 
 Example:
 
-```
+```bash
 at now + 3 minutes
 echo "One-time task" >> /tmp/at-test.log
 Ctrl+D
@@ -173,7 +172,7 @@ Check after time passes: cat /tmp/at-test.log
 
 ## Commands Summary
 
-```
+```bash
 ps, ps aux, ps -l            # View processes
 top                          # Realtime process monitor
 &                            # Run in background
