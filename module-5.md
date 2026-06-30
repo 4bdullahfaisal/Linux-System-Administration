@@ -26,7 +26,7 @@ Example - `/tmp` directory:
 
 Practice:
 
-```
+```bash
 sudo mkdir /shared
 sudo chmod 777 /shared
 sudo chmod +t /shared
@@ -53,7 +53,7 @@ Example - `/bin/passwd` (updates /etc/shadow as root):
 
 Practice on a binary:
 
-```
+```bash
 sudo cp /bin/sleep /usr/local/bin/sleep-suid
 sudo chmod u+s /usr/local/bin/sleep-suid
 ls -l /usr/local/bin/sleep-suid
@@ -69,7 +69,7 @@ On directories — new files inherit directory's group
 
 Practice on directory:
 
-```
+```bash
 sudo mkdir /group-shared
 sudo chmod 2775 /group-shared
 ls -ld /group-shared
@@ -89,7 +89,7 @@ Number | Permission
 
 Examples:
 
-```
+```bash
 chmod 4755 file     # -rwsr-xr-x (SUID)
 chmod 2755 dir      # drwxr-sr-x (SGID)
 chmod 1755 dir      # drwxr-xr-t (Sticky)
@@ -138,36 +138,36 @@ Permissions: r (read), w (write), x (execute), - (none)
 
 ### Commands Summary
 
-```
+```bash
 chmod +t directory                                  # Sticky Bit
 
 chmod u+s file                                      # SUID
 
-chmod g+s file` or `chmod 2775 directory            # SGID
+chmod g+s file or chmod 2775 directory              # SGID
 ```
 
 ### ACL Command
 
-```
-getfacl file
+```bash
+getfacl file                                        # View ACL entries for a file/directory
 
-setfacl -m u:user:perms file
+setfacl -m u:user:perms file                        # Set permissions for a specific user
 
-setfacl -m g:group:perms file
+setfacl -m g:group:perms file                       # Set permissions for a specific group
 
-setfacl -x u:user file
+setfacl -x u:user file                              # Remove ACL entry for a specific user
 
-setfacl -b file
+setfacl -b file                                     # Remove all ACL entries
 ```
 
 Special chmod numbers:
 
-```
-1777                                                 # Sticky Bit
+```bash
+1777                                                # Sticky Bit
 
-4755                                                 # SUID
+4755                                                # SUID
 
-2755                                                 # SGID
+2755                                                # SGID
 ```
 
 ---
