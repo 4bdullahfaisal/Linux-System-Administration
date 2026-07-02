@@ -215,6 +215,7 @@ Change user's primary group:
 whoami                           # Current user  
 id                               # User and group IDs  
 who                              # Logged in users  
+cat /etc/passwd                  # List of users
 sudo useradd name                # Create user  
 sudo passwd name                 # Set password  
 sudo usermod options name        # Modify user  
