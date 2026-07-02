@@ -119,7 +119,7 @@ sudo firewall-cmd --list-all
 ## Create custom background service with auto-restart
 
 ```bash
-sudo nano /etc/systemd/system/app.service/
+sudo nano /etc/systemd/system/app.service
 ```
 
 ```bash
