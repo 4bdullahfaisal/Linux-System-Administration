@@ -166,7 +166,6 @@ echo "<h1>Updated at $(date)</h1>" > index.html
 # Restart service
 sudo systemctl restart app
 echo "$(date) - Service restarted" >> $LOG
-
 echo "$(date) - Deployment completed" >> $LOG
 ```
 ```bash
