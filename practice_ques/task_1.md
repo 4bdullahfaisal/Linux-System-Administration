@@ -42,7 +42,7 @@ sudo usermod -aG devops ops1
 
 sudo visudo -f /etc/sudoers.d/ops1
 
-# Add line: ops1 ALL=(ALL) ALL
+- Add line: `ops1 ALL=(ALL) ALL`
 
 ## Create web directory and sample app
 
