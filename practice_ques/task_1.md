@@ -48,7 +48,9 @@ sudo visudo -f /etc/sudoers.d/ops1
 
 sudo mkdir -p /var/www/app
 
+```html
 echo "<h1>Welcome to Dev Team App</h1>" | sudo tee /var/www/app/index.html
+```
 
 ## Configure Apache to serve from /var/www/app
 
