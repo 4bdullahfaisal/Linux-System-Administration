@@ -10,6 +10,8 @@ cd <folder>                 # Change directory
 cd ~                        # Go to home directory
 mkdir <name>                # Create directory
 touch <file>                # Create empty file
+>                           # overwrites
+>>                          # appends
 cat <file>                  # View file content
 cat > <file>                # Create file (type content, Ctrl+D to save)
 cat >> <file>               # Append to existing file
@@ -20,17 +22,6 @@ cp <source> <dest>          # Copy file
 mv <source> <dest>          # Move/rename file
 ```
 
-### Viewing File Parts
-
-```bash
-head <file>                 # Show first 10 lines
-head -n 20 <file>           # Show first 20 lines
-tail <file>                 # Show last 10 lines  
-tail -n 15 <file>           # Show last 15 lines
-tail -f <file>              # Follow file (watch new lines in real-time)
-head -20 file | tail -10    # Show lines 11-20 (middle section)
-```
-
 ### File Content
 
 ```bash
@@ -38,7 +29,11 @@ echo "text"                 # Print text
 echo "text" > file.txt      # Write text to file (overwrite)
 echo "text" >> file.txt     # Append text to file
 head <file>                 # Show first 10 lines
+head -n 20 <file>           # Show first 20 lines
 tail <file>                 # Show last 10 lines
+tail -n 15 <file>           # Show last 15 lines
+tail -f <file>              # Follow file (watch new lines in real-time)
+head -20 file | tail -10    # Show lines 11-20 (middle section)
 grep "pattern" <file>       # Search text in file
 | (pipe)                    # Send output of one command as input to another
 ```
