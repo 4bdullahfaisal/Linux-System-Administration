@@ -5,7 +5,7 @@
 
 ---
 
-## Linux Commands & Practice
+## More Linux Commands
 
 **head** — shows the first lines of a file. 
 
