@@ -1,4 +1,4 @@
-# Module 8 — File System & Managing Storage (Disks, Partitions, Mounting, Swap, LVM)
+# Module 9 — File System & Managing Storage (Disks, Partitions, Mounting, Swap, LVM)
 **Environment:** Oracle Linux 9 on VirtualBox
 
 ---
