@@ -6,6 +6,7 @@
 ### Essentials Tools
 ### User & Group Management
 ### Process Management 
+### File Permissions
 ### Advanced Permissions
 ### System Management
 ### System Security
