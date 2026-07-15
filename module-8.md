@@ -1,4 +1,4 @@
-# Module 7 — System Security (Secure Remote Access (SSH, SCP, SFTP))
+# Module 8 — System Security (Secure Remote Access (SSH, SCP, SFTP))
 **Environment:** Oracle Linux 9 on VirtualBox + Windows 11 (Git Bash)
 
 ---
