@@ -24,11 +24,19 @@
 
 ```bash
 ls -l
+ls -a
+ls -l /etc/passwd
 ```
+
+| Part | Meaning |
+|------|---------|
+| `-l` | Long format (permissions, owner, size, date) |
+| `-a` | All files (including hidden ones starting with `.`) |
 
 Example output:
 ```
 -rwxr-xr-- 1 user group 1024 Apr 1 10:00 file.txt
+-rw-r--r--. 1 root root 2500 Apr 1 10:00 /etc/passwd
 ```
 
 ### Breakdown:
@@ -38,9 +46,12 @@ Example output:
 | `-` | File type (`-` = file, `d` = directory, `l` = link) |
 | `rwx` | User permissions |
 | `r-x` | Group permissions |
-| `r--` | Others permissions |
+| `rw-` | Owner permissions (read+write) |
+| `r--` | Group permissions (read) |
+| `root` | Owner |
+| `root` | Group |
 | `user` | Owner name |
-| `group` | Group name |
+| `group` | Group name || `-` | File type |
 
 ---
 
