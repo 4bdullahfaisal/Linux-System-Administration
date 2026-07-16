@@ -1,4 +1,4 @@
-# Module 11 — Network Management (Networking, Firewalld & AutoFS)
+# Module 12 — Network Management (Networking, Firewalld & AutoFS)
 **Environment:** Oracle Linux 9 on VirtualBox
 
 ---
