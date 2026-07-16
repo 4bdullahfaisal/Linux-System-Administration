@@ -9,6 +9,7 @@
 ### Advanced Permissions
 ### User & Group Management
 ### Process Management
+### Package Managment
 ### System Management
 ### System Security
 ### Disk Management 
