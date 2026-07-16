@@ -1,4 +1,4 @@
-# Module 3 — User & Group Management
+# Module 6 — User & Group Management
 
 **Environment:** Oracle Linux 9 on VirtualBox
 
