@@ -126,6 +126,7 @@ Inside nano:
 
 ---
 
+
 ### File globbing 
 
 **File globbing** uses wildcards to match multiple files.
