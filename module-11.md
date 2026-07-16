@@ -1,4 +1,4 @@
-# Module 10 — Disk Management & Managing Storage (Disks, Partitions, Mounting, Swap, LVM)
+# Module 11 — Disk Management & Managing Storage (Disks, Partitions, Mounting, Swap, LVM)
 **Environment:** Oracle Linux 9 on VirtualBox
 
 ---
