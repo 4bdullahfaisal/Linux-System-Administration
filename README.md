@@ -4,9 +4,9 @@
 ## Topics Overview
 ### Installation Setup
 ### Essentials Tools
-### User & Group Management
 ### File Permissions
 ### Advanced Permissions
+### User & Group Management
 ### Process Management
 ### System Management
 ### System Security
