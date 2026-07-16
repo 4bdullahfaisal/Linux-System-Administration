@@ -22,6 +22,7 @@ touch <file>                # Create empty file
 cat <file>                  # View file content
 cat > <file>                # Create file (type content, Ctrl+D to save)
 cat >> <file>               # Append to existing file
+cat << EOF > file>          # create file and add multi-line text
 nano <file>                 # Edit file with nano editor
 rm <file>                   # Remove file
 rm -rf <folder>             # Remove folder recursively
