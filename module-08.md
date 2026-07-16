@@ -1,4 +1,4 @@
-# Module 7 — System Management (Repositories, Package Management & System Services)
+# Module 8 — System Management (Repositories, Package Management & System Services)
 **Environment:** Oracle Linux 9 on VirtualBox
 ---
 
