@@ -1,6 +1,5 @@
-# Module 4 — File Permissions
+# Module 4 — File Permissions 
 ---
-
 ## Permission Types
 
 | Number | Permission | File Meaning | Directory Meaning |
