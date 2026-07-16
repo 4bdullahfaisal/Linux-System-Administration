@@ -5,7 +5,6 @@
 ### Installation Setup
 ### Essentials Tools
 ### User & Group Management
-### Process Management 
 ### File Permissions
 ### Advanced Permissions
 ### Process Management
