@@ -1,4 +1,4 @@
-# Module 8 — System Management (Repositories, Package Management & System Services)
+# Module 8 — Package management (Repositories, Package Management)
 **Environment:** Oracle Linux 9 on VirtualBox
 ---
 
@@ -78,53 +78,6 @@ sudo yum remove httpd -y
 
 ---
 
-## System Services (systemctl)
-
-systemctl manages systemd services — programs that run in the background.
-
-### Service States
-
-- active (running) — Service is running
-- inactive (dead) — Service is stopped
-- enabled — Starts on boot
-- disabled — Does not start on boot
-- masked — Cannot be started (locked)
-
-### Basic systemctl Commands
-
-```bash
-systemctl status service           # Check if service is running
-
-sudo systemctl start service       # Start a service
-
-sudo systemctl stop service        # Stop a service
-
-sudo systemctl restart service     # Restart a service
-
-sudo systemctl enable service      # Enable on boot
-
-sudo systemctl disable service     # Disable on boot
-
-systemctl is-enabled service ````  # Check if enabled on boot
-
-```
-
-### Practice with SSH
-
-```bash
-systemctl status sshd
-
-systemctl stop sshd
-
-systemctl status sshd
-
-systemctl start sshd
-
-systemctl is-enabled sshd
-```
-
----
-
 ## Commands Summary
 
 ```bash
@@ -139,9 +92,6 @@ sudo yum update <package>
 sudo yum remove <package>
 yum list installed
 
-### System Services
-systemctl status <service>
-sudo systemctl start <service>
 sudo systemctl stop <service>
 sudo systemctl enable <service>
 sudo systemctl disable <service>
