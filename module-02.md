@@ -15,6 +15,7 @@ ls -la                      # List all files (including hidden)
 cd <folder>                 # Change directory
 cd ~                        # Go to home directory
 mkdir <name>                # Create directory
+mkdir -p <name>             # Create parent directories if they don't exist 
 touch <file>                # Create empty file
 >                           # overwrites
 >>                          # appends
