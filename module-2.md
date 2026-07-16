@@ -4,16 +4,69 @@
 **VM:** Oracle Linux 9 on VirtualBox
 
 ---
+# Linux Commands
+
+### File Operations
+
+```bash
+pwd                         # Show current directory
+ls                          # List files
+ls -la                      # List all files (including hidden)
+cd <folder>                 # Change directory
+cd ~                        # Go to home directory
+mkdir <name>                # Create directory
+touch <file>                # Create empty file
+>                           # overwrites
+>>                          # appends
+cat <file>                  # View file content
+cat > <file>                # Create file (type content, Ctrl+D to save)
+cat >> <file>               # Append to existing file
+nano <file>                 # Edit file with nano editor
+rm <file>                   # Remove file
+rm -rf <folder>             # Remove folder recursively
+cp <source> <dest>          # Copy file
+mv <source> <dest>          # Move/rename file
+```
+
+### File Content
+
+```bash
+echo "text"                 # Print text
+echo "text" > file.txt      # Write text to file (overwrite)
+echo "text" >> file.txt     # Append text to file
+head <file>                 # Show first 10 lines
+head -n 20 <file>           # Show first 20 lines
+tail <file>                 # Show last 10 lines
+tail -n 15 <file>           # Show last 15 lines
+tail -f <file>              # Follow file (watch new lines in real-time)
+head -20 file | tail -10    # Show lines 11-20 (middle section)
+grep "pattern" <file>       # Search text in file
+| (pipe)                    # Send output of one command as input to another
+```
+
+### Terminal Shortcuts
+
+```bash
+Ctrl+C                      # Cancel/terminate current command  
+Ctrl+D                      # Exit shell or end file input  
+Ctrl+Z                      # Suspend current process  
+Ctrl+R                      # Search command history  
+Ctrl+L or clear             # Clear terminal screen  
+!!                          # Repeat last command  
+!$                          # Last argument of previous command  
+```
 
 ## More Linux Commands
 
-**head** — shows the first lines of a file. 
+### head 
+shows the first lines of a file. 
 
 `head /etc/passwd` shows the first 10 lines. 
 
 `head -n 5 /etc/passwd` shows only the first 5 lines.
 
-**tail** — shows the last lines of a file. 
+### tail 
+shows the last lines of a file. 
 
 `tail /etc/passwd` shows the last 10 lines. 
 
@@ -21,21 +74,25 @@
 
 `tail -f /var/log/messages` follows the log in real time — press Ctrl+C to stop.
 
-**passwd** — changes your password. 
+### passwd
+changes your password. 
 
 Just type `passwd` and follow the prompts. 
 
 `sudo passwd username` changes another user's password.
 
-**man** — opens the manual page for any command. 
+### man
+opens the manual page for any command. 
 
 `man ls`, `man head`, `man tail`, `man grep`. Press `q` to exit.
 
-**nano** — is a terminal text editor. 
+### nano
+is a terminal text editor. 
 
 `nano win.txt` opens or creates a file. 
 
-Inside nano: Ctrl+O saves, Ctrl+X exits, Ctrl+W searches, Ctrl+K cuts a line, Ctrl+U pastes.
+Inside nano: 
+> Ctrl+O saves, Ctrl+X exits, Ctrl+W searches, Ctrl+K cuts a line, Ctrl+U pastes.
 
 ---
 
